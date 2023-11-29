@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Alliance API
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://edocketportalapi.concrete.hk
+paths:
+  /extApi/api/Auth/Login:
+    post:
+      summary: Login
+      description: Login
+      operationId: login
+      parameters:
+        - name: Access-Control-Allow-Origin
+          in: header
+          schema:
+            type: string
+            example: '*'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: 'xxx'
+                userName:
+                  type: string
+                  example: 'xxx'
+            examples:
+              Login:
+                value:
+                  password: 'xxx'
+                  userName: 'xxx'
+      responses:
+        '200':
+          description: ''
+      security:
+        - {}
+  /extApi/api/Docket/List:
+    post:
+      summary: DocketList HKT2
+      description: DocketList HKT2
+      operationId: docketlistHkt2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderDateFrom:
+                  type: string
+                  example: '2023-10-24'
+                orderDateTo:
+                  type: string
+                  example: '2023-10-27'
+                projectId:
+                  type: string
+                  example: '9350000134'
+            examples:
+              DocketList 1201:
+                value:
+                  orderDateFrom: '2023-11-15'
+                  orderDateTo: '2023-11-15'
+                  projectId: '9350002749'
+              DocketList HKCKR:
+                value:
+                  orderDateFrom: '2023-10-24'
+                  orderDateTo: '2023-10-27'
+                  projectId: '9350000134'
+              DocketList HKSMS:
+                value:
+                  orderDateFrom: '2023-10-24'
+                  orderDateTo: '2023-10-27'
+                  projectId: '9350001685'
+              DocketList HKT2:
+                value:
+                  orderDateFrom: '2023-11-14'
+                  orderDateTo: '2023-11-15'
+                  projectId: '9350000141'
+              DocketList TKO:
+                value:
+                  orderDateFrom: '2023-10-24'
+                  orderDateTo: '2023-10-27'
+                  projectId: '9350001943'
+              DocketList Tung Chung?:
+                value:
+                  orderDateFrom: '2023-10-24'
+                  orderDateTo: '2023-10-27'
+                  projectId: '9350003151'
+      responses:
+        '200':
+          description: ''
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags: []
